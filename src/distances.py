@@ -65,7 +65,7 @@ def train_autoencoder(x_train, y_train,LATENT_SIZE,save_file,epochs=5):
     #     plt.subplots_adjust(wspace = 0, hspace = 0)
     #     plt.show()
     #     print("-----------", "EPOCH", epoch, "-----------")
-    model.fit(x_train, x_train,epochs=epochs)
+    model.fit(x_train, x_train,epochs=epochs,batch_size=128)
 
     model.save(save_file)
     trained_encoder = Model(model.input, model.get_layer('encoder_output').output)
