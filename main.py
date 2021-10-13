@@ -1,4 +1,4 @@
-from tf.keras.datasets import mnist
+from tensorflow.keras.datasets import mnist
 from src.distances import train_autoencoder
 import numpy as np
 
