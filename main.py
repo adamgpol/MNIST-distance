@@ -1,6 +1,8 @@
 from tensorflow.keras.datasets import mnist
 from src.distances import train_autoencoder
 import numpy as np
+from matplotlib import pyplot as plt
+from IPython import display # If using IPython, Colab or Jupyter
 
 (x_train, y_train), (x_test, y_test) = mnist.load_data()
 x_train = x_train/255.0
@@ -9,12 +11,15 @@ x_test = x_test/255.0
 LATENT_SIZE = 2
 save_file='./autoencoder_models/latent_size_2'
 
-encoder,decoder = train_autoencoder(x_train,y_train,LATENT_SIZE,save_file)
+encoder, decoder= train_autoencoder(x_train,y_train,LATENT_SIZE,
+                                save_file,
+                                load_file=None,
+                                epochs=10)
 
 fig, axs = plt.subplots(4, 4)
 rand = x_test[np.random.randint(0, 10000, 16)].reshape((4, 4, 1, 28, 28))
 
-# display.clear_output() # If you imported display from IPython
+display.clear_output() # If you imported display from IPython
 
 for i in range(4):
     for j in range(4):
