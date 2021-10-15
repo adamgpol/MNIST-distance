@@ -1,5 +1,6 @@
 from tensorflow.keras.datasets import mnist
 from src.distances import train_autoencoder,class_distances
+from src.distances import *
 import numpy as np
 from matplotlib import pyplot as plt
 from IPython import display # If using IPython, Colab or Jupyter
@@ -11,7 +12,7 @@ x_test = x_test/255.0
 LATENT_SIZE = 10
 save_file='./autoencoder_models/latent_size_10'
 
-encoder, model= train_autoencoder(x_train,y_train,
+encoder, encoder_decoder= train_autoencoder(x_train,y_train,
                                 save_file=None,
                                 load_file=save_file,
                                 epochs=0,
@@ -24,7 +25,7 @@ encoder, model= train_autoencoder(x_train,y_train,
 #
 # for i in range(4):
 #     for j in range(4):
-#         axs[i, j].imshow(model(rand[i, j])[0], cmap = "gray")
+#         axs[i, j].imshow(encoder_decoder(rand[i, j])[0], cmap = "gray")
 #         axs[i, j].axis("off")
 #         axs[i, j+4].imshow((rand[i, j])[0], cmap = "gray")
 #         axs[i, j+4].axis("off")
@@ -36,3 +37,6 @@ np.set_printoptions(precision=2, linewidth=100, suppress=True)
 distances=class_distances(10,x_train,y_train,encoder)
 print('y_train DEBUG:',y_train[5])
 print('distance matrix:\n',distances)
+
+model = build_model()
+train_model(model,x_train,y_train,(x_test,y_test))
