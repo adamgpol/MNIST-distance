@@ -22,20 +22,6 @@ encoder, encoder_decoder= train_autoencoder(x_train,y_train,
                                 epochs=0,
                                 batch_size=128)
 
-# fig, axs = plt.subplots(4, 8)
-# rand = x_test[np.random.randint(0, 10000, 16)].reshape((4, 4, 1, 28, 28))
-#
-# display.clear_output() # If you imported display from IPython
-#
-# for i in range(4):
-#     for j in range(4):
-#         axs[i, j].imshow(encoder_decoder(rand[i, j])[0], cmap = "gray")
-#         axs[i, j].axis("off")
-#         axs[i, j+4].imshow((rand[i, j])[0], cmap = "gray")
-#         axs[i, j+4].axis("off")
-#
-# plt.subplots_adjust(wspace = 0, hspace = 0)
-# plt.show()
 np.set_printoptions(precision=2, linewidth=100, suppress=True)
 
 distances=class_distances(10,x_train,y_train,encoder)
@@ -44,3 +30,21 @@ print('distance matrix:\n',distances)
 
 model = build_model()
 train_model(model,x_train,get_one_hot(y_train,10),(x_test,get_one_hot(y_test,10)))
+
+fig, axs = plt.subplots(4, 8)
+rand = x_test[np.random.randint(0, 10000, 16)].reshape((4, 4, 1, 28, 28))
+
+display.clear_output() # If you imported display from IPython
+
+for i in range(4):
+    for j in range(4):
+        axs[i, j].imshow(encoder_decoder(rand[i, j])[0], cmap = "gray")
+        axs[i, j].axis("off")
+        axs[i, j+4].imshow((rand[i, j])[0], cmap = "gray")
+        axs[i, j+4].axis("off")
+        print(y_test[rand[i,j]],end=' ')
+    print('')
+
+
+plt.subplots_adjust(wspace = 0, hspace = 0)
+plt.show()
