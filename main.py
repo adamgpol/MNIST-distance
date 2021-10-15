@@ -13,9 +13,9 @@ save_file='./autoencoder_models/latent_size_10'
 
 encoder, model= train_autoencoder(x_train,y_train,
                                 save_file=save_file,
-                                load_file=None,
-                                epochs=1,
-                                batch_size=1024)
+                                load_file=save_file,
+                                epochs=10,
+                                batch_size=128)
 
 fig, axs = plt.subplots(4, 8)
 rand = x_test[np.random.randint(0, 10000, 16)].reshape((4, 4, 1, 28, 28))
