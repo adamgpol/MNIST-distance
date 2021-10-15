@@ -68,19 +68,19 @@ def train_autoencoder(x_train, y_train,save_file=None,load_file=None,epochs=5,ba
 
     return trained_encoder,model
 
-    def class_distances(num_classes,x_train,y_train,encoder):
-        distances=np.zeros((num_classes,num_classes))
-        for i in range(num_classes):
-            for j in range(i+1,num_classes):
-                i_indices=np.argwhere(y_train==i)
-                j_indices=np.argwhere(y_train==j)
-                i_samples=encoder(x_train[i_indices])
-                j_samples=encoder(x_train[j_indices])
-                i_center=i_samples.mean(axis=0)
-                j_center=j_samples.mean(axis=0)
-                distances[i,j]=np.sqrt(np.sum((i_center-j_center)**2))
-        for i in range(num_classes):
-            for j in range(i+1,num_classes):
-                distances[j,i]=distances[i,j]
+def class_distances(num_classes,x_train,y_train,encoder):
+    distances=np.zeros((num_classes,num_classes))
+    for i in range(num_classes):
+        for j in range(i+1,num_classes):
+            i_indices=np.argwhere(y_train==i)
+            j_indices=np.argwhere(y_train==j)
+            i_samples=encoder(x_train[i_indices])
+            j_samples=encoder(x_train[j_indices])
+            i_center=i_samples.mean(axis=0)
+            j_center=j_samples.mean(axis=0)
+            distances[i,j]=np.sqrt(np.sum((i_center-j_center)**2))
+    for i in range(num_classes):
+        for j in range(i+1,num_classes):
+            distances[j,i]=distances[i,j]
 
-        return distances
+    return distances
