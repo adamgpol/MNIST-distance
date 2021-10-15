@@ -42,7 +42,7 @@ for i in range(4):
         axs[i, j].axis("off")
         axs[i, j+4].imshow((rand[i, j])[0], cmap = "gray")
         axs[i, j+4].axis("off")
-        print(y_test[rand[i,j]],end=' ')
+        print(np.argmax(model(rand[i,j])),end=' ')
     print('')
 
 
