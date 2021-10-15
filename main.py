@@ -8,23 +8,26 @@ from IPython import display # If using IPython, Colab or Jupyter
 x_train = x_train/255.0
 x_test = x_test/255.0
 # Plot image data from x_train
-LATENT_SIZE = 2
-save_file='./autoencoder_models/latent_size_2'
+LATENT_SIZE = 10
+save_file='./autoencoder_models/latent_size_10'
 
-encoder, decoder= train_autoencoder(x_train,y_train,LATENT_SIZE,
-                                save_file,
+encoder, model= train_autoencoder(x_train,y_train,
+                                save_file=save_file,
                                 load_file=None,
-                                epochs=10)
+                                epochs=1,
+                                batch_size=1024)
 
-fig, axs = plt.subplots(4, 4)
+fig, axs = plt.subplots(4, 8)
 rand = x_test[np.random.randint(0, 10000, 16)].reshape((4, 4, 1, 28, 28))
 
 display.clear_output() # If you imported display from IPython
 
 for i in range(4):
     for j in range(4):
-        axs[i, j].imshow(decoder(encoder((rand[i, j])))[0], cmap = "gray")
+        axs[i, j].imshow(model(rand[i, j])[0], cmap = "gray")
         axs[i, j].axis("off")
+        axs[i, j+4].imshow((rand[i, j])[0], cmap = "gray")
+        axs[i, j+4].axis("off")
 
 plt.subplots_adjust(wspace = 0, hspace = 0)
 plt.show()
