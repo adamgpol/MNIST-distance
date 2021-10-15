@@ -13,19 +13,19 @@ def get_one_hot(targets, nb_classes):
 x_train = x_train/255.0
 x_test = x_test/255.0
 # Plot image data from x_train
-LATENT_SIZE = 10
+LATENT_SIZE = 2
 save_file='./autoencoder_models/latent_size_10'
 
 encoder, encoder_decoder= train_autoencoder(x_train,y_train,
                                 save_file=None,
                                 load_file=save_file,
-                                epochs=0,
+                                epochs=10,
                                 batch_size=128)
 
 np.set_printoptions(precision=2, linewidth=100, suppress=True)
 
 distances=class_distances(10,x_train,y_train,encoder)
-print('y_train DEBUG:',y_train[5])
+
 print('distance matrix:\n',distances)
 
 model = build_model()

@@ -4,7 +4,7 @@ from tensorflow.keras.models import Model, Sequential
 import tensorflow as tf
 import numpy as np
 
-LATENT_SIZE=10
+LATENT_SIZE=2
 
 def vae_sampling(encoder_output):
     mean, log_sigma = encoder_output
