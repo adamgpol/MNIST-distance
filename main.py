@@ -14,7 +14,7 @@ x_train = x_train/255.0
 x_test = x_test/255.0
 # Plot image data from x_train
 LATENT_SIZE = 2
-save_file='./autoencoder_models/latent_size_10'
+save_file='./autoencoder_models/latent_size_2'
 
 encoder, encoder_decoder= train_autoencoder(x_train,y_train,
                                 save_file=save_file,
