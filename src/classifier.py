@@ -14,7 +14,7 @@ def build_model():
     output_layer=Dense(10,activation='sigmoid',name='output')(flatten_layer)
 
     model=Model(inputs=input_layer,outputs=output_layer)
-    model.compile(optimizer='Adam',loss='categorical_crossentropy')
+    model.compile(optimizer='Adam',loss='categorical_crossentropy',metrics=['accuracy','loss'])
 
     return model
 
