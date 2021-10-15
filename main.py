@@ -31,7 +31,7 @@ encoder, model= train_autoencoder(x_train,y_train,
 #
 # plt.subplots_adjust(wspace = 0, hspace = 0)
 # plt.show()
-print(y_train[5])
+numpy.set_printoptions(precision=2, linewidth=100, suppress=True)
 
 distances=class_distances(10,x_train,y_train,encoder)
 print(distances)
