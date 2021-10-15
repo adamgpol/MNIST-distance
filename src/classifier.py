@@ -21,7 +21,7 @@ def build_model():
 def train_model(model,x_train,y_train,val_data,epochs=10,batch_size=128,save_file=None,load_file=None):
     if load_file is not None:
         model.load_weights(load_file+'.h5')
-    model.fit(x_train, y_train,val_data,epochs=epochs,batch_size=batch_size)
+    model.fit(x_train, y_train,validation_data=val_data,epochs=epochs,batch_size=batch_size)
 
     if save_file is not None:
         model.save_weights(save_file+'.h5')
