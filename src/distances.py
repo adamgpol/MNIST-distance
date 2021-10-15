@@ -72,9 +72,8 @@ def class_distances(num_classes,x_train,y_train,encoder):
     distances=np.zeros((num_classes,num_classes))
     for i in range(num_classes):
         for j in range(i+1,num_classes):
-            i_indices=np.argwhere(y_train==i)
-            j_indices=np.argwhere(y_train==j)
-            print(i_indices.shape)
+            i_indices=np.argwhere(y_train==i).flatten()
+            j_indices=np.argwhere(y_train==j).flatten()
             i_samples=encoder(x_train[i_indices])
             j_samples=encoder(x_train[j_indices])
             i_center=i_samples.mean(axis=0)
