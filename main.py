@@ -17,8 +17,8 @@ LATENT_SIZE = 2
 save_file='./autoencoder_models/latent_size_10'
 
 encoder, encoder_decoder= train_autoencoder(x_train,y_train,
-                                save_file=None,
-                                load_file=save_file,
+                                save_file=save_file,
+                                load_file=None,
                                 epochs=10,
                                 batch_size=128)
 
