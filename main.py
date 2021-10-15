@@ -1,6 +1,6 @@
 from tensorflow.keras.datasets import mnist
 from src.distances import train_autoencoder,class_distances
-from src.distances import *
+from src.classifier import *
 import numpy as np
 from matplotlib import pyplot as plt
 from IPython import display # If using IPython, Colab or Jupyter
