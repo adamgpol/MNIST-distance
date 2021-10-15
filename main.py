@@ -5,6 +5,10 @@ import numpy as np
 from matplotlib import pyplot as plt
 from IPython import display # If using IPython, Colab or Jupyter
 
+def get_one_hot(targets, nb_classes):
+    res = np.eye(nb_classes)[np.array(targets).reshape(-1)]
+    return res.reshape(list(targets.shape)+[nb_classes])
+
 (x_train, y_train), (x_test, y_test) = mnist.load_data()
 x_train = x_train/255.0
 x_test = x_test/255.0
@@ -39,4 +43,4 @@ print('y_train DEBUG:',y_train[5])
 print('distance matrix:\n',distances)
 
 model = build_model()
-train_model(model,x_train,y_train,(x_test,y_test))
+train_model(model,x_train,get_one_hot(y_train,10),(x_test,get_one_hot(y_test,10)))
