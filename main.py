@@ -29,7 +29,7 @@ print('y_train DEBUG:',y_train[5])
 print('distance matrix:\n',distances)
 
 model = build_model()
-train_model(model,x_train,get_one_hot(y_train,10),(x_test,get_one_hot(y_test,10)))
+train_model(model,x_train,get_one_hot(y_train,5),(x_test,get_one_hot(y_test,10)))
 
 fig, axs = plt.subplots(4, 8)
 rand = x_test[np.random.randint(0, 10000, 16)].reshape((4, 4, 1, 28, 28))
