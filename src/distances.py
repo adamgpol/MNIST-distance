@@ -74,6 +74,7 @@ def class_distances(num_classes,x_train,y_train,encoder):
         for j in range(i+1,num_classes):
             i_indices=np.argwhere(y_train==i)
             j_indices=np.argwhere(y_train==j)
+            print(i_indices.shape)
             i_samples=encoder(x_train[i_indices])
             j_samples=encoder(x_train[j_indices])
             i_center=i_samples.mean(axis=0)
