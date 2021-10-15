@@ -34,3 +34,4 @@ encoder, model= train_autoencoder(x_train,y_train,
 print(y_train[5])
 
 distances=class_distances(10,x_train,y_train,encoder)
+print(distances)
